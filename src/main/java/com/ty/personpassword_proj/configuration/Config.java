@@ -14,11 +14,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = {"com.ty.personpassword_proj"})
 public class Config {
 
-	@Bean
+	@Bean(value = "emf")
 	@Scope(value = "prototype")
 	public EntityManagerFactory getEMFactory() {
 
-		return Persistence.createEntityManagerFactory("spr");
+		return Persistence.createEntityManagerFactory("pass");
 	}
-
 }
