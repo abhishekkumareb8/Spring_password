@@ -1,5 +1,12 @@
 package com.ty.personpassword_proj.contraller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,10 +61,15 @@ public class PersonController {
 	public ModelAndView getUser(@ModelAttribute User user) {
 		ModelAndView modelAndView= new ModelAndView(); 
 		User user2 = service.getUserByEmail(user);
-		if(user2 !=null) {
+		if(user2 !=null && user2.getRole().equals("user")) {
 			modelAndView.addObject("name", user2.getName());
-			modelAndView.addObject("slist", service.getAllUser());
+			modelAndView.addObject("user", service.getUserByEmail(user2));
 			modelAndView.setViewName("view.jsp");
+		}
+		else if(user2 != null) {
+			modelAndView.addObject("name", user2.getName());
+			modelAndView.addObject("user", service.getAllUser());
+			modelAndView.setViewName("adminview.jsp");
 		}
 		else
 			modelAndView.setViewName("index.jsp");
@@ -69,6 +81,13 @@ public class PersonController {
 		modelAndView.setViewName("viewapp.jsp");
 //		modelAndView.addObject("appget", new Application());
 		return modelAndView;		
+	}
+	@RequestMapping("delete")
+	public ModelAndView viewApplication(User user) {
+		ModelAndView modelAndView= new ModelAndView();
+		modelAndView.setViewName("delete.jsp");
+//		modelAndView.addObject("appget", new Application());
+		return modelAndView;
 	}
 
 }

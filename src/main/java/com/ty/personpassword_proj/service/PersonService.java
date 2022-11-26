@@ -43,5 +43,9 @@ public class PersonService {
 		return null;
 	}
 	
+	public void deleteUser(int id)
+	{
+		dao.deleteUser(id);
+	}
 
 }
