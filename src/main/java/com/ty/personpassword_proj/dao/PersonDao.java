@@ -77,7 +77,7 @@ public class PersonDao {
 
 	public User getUserEmail(String email) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		Query query = entityManager.createQuery("Select u from Employee u where u.email=?1", User.class)
+		Query query = entityManager.createQuery("Select u from User u where u.email=?1", User.class)
 				.setParameter(1, email);
 
 		return (User) query.getSingleResult();

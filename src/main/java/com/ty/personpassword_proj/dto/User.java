@@ -1,12 +1,17 @@
 package com.ty.personpassword_proj.dto;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -14,6 +19,9 @@ public class User {
 	private String email;
 	private String password;
 	private String role;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	List<Application> applications;
 
 	public String getRole() {
 		return role;
@@ -55,10 +63,18 @@ public class User {
 		this.password = password;
 	}
 
+	public List<Application> getApplications() {
+		return applications;
+	}
+
+	public void setApplications(List<Application> applications) {
+		this.applications = applications;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", role=" + role
-				+ "]";
+				+ ", applications=" + applications + "]";
 	}
 
 }

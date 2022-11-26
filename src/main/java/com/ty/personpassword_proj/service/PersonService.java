@@ -1,6 +1,8 @@
 
 package com.ty.personpassword_proj.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,18 @@ public class PersonService {
 	public User user(User user)
 	{
 		return dao.getUserEmail(user.getEmail());
+	}
+	
+	public List<User> getAllUser(){
+		return  dao.getUser();
+	}
+	
+	public User getUserByEmail(User user) {
+		User receiveUser= dao.getUserEmail(user.getEmail());		
+		if(user.getPassword().equals(receiveUser.getPassword())) {
+			return receiveUser;
+		}
+		return null;
 	}
 	
 

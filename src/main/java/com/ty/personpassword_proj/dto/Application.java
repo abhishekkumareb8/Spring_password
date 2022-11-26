@@ -1,11 +1,9 @@
 package com.ty.personpassword_proj.dto;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -50,22 +48,11 @@ public class Application {
 		this.appPass = appPass;
 	}
 	
-	@ManyToOne (cascade = CascadeType.ALL)
-	private User user;
-	
-	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	
 	@Override
 	public String toString() {
 		return "Application [id=" + id + ", appName=" + appName + ", appUserName=" + appUserName + ", appEmail="
-				+ appEmail + ", appPass=" + appPass + ", user=" + user + "]";
+				+ appEmail + ", appPass=" + appPass + "]";
 	}
 
 	
