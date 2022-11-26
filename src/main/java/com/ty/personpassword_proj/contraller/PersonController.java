@@ -48,7 +48,20 @@ public class PersonController {
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login.jsp");
-//		modelAndView.addObject("employeeget", new Employee());
+		modelAndView.addObject("userget", new User());
+		return modelAndView;
+	}
+	@RequestMapping("loginoption")
+	public ModelAndView getUser(@ModelAttribute User user) {
+		ModelAndView modelAndView= new ModelAndView(); 
+		User user2 = service.getUserByEmail(user);
+		if(user2 !=null) {
+			modelAndView.addObject("name", user2.getName());
+			modelAndView.addObject("slist", service.getAllUser());
+			modelAndView.setViewName("view.jsp");
+		}
+		else
+			modelAndView.setViewName("index.jsp");
 		return modelAndView;
 	}
 

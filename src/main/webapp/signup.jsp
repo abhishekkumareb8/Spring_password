@@ -25,8 +25,8 @@
 		<br>
 		<br>
 
-		<form:label path="role">Role</form:label>
-		<form:input path="role" />
+		User<form:radiobutton path="role" value="user"/>
+		Admin<form:radiobutton path="role" value="admin"/>
 		<br>
 		<br>
 
