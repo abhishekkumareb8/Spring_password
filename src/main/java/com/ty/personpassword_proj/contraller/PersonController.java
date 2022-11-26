@@ -30,8 +30,7 @@ public class PersonController {
 	public ModelAndView saveStudent(@ModelAttribute User user ) {
 		 u2=service.saveuser(user);
 		ModelAndView modelAndView= new ModelAndView();
-		modelAndView.addObject("application", new Application());
-		
+		modelAndView.addObject("application", new Application());		
 		modelAndView.setViewName("signupapp.jsp");
 		return modelAndView;
 	}
@@ -63,6 +62,13 @@ public class PersonController {
 		else
 			modelAndView.setViewName("index.jsp");
 		return modelAndView;
+	}
+	@RequestMapping("viewpass")
+	public ModelAndView viewApplication(Application application ) {
+		ModelAndView modelAndView= new ModelAndView();
+		modelAndView.setViewName("viewapp.jsp");
+//		modelAndView.addObject("appget", new Application());
+		return modelAndView;		
 	}
 
 }
