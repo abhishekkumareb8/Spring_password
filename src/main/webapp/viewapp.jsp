@@ -11,21 +11,20 @@
 <table border="2px">
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
+			<th>appName</th>
+			<th>Username</th>\
 			<th>Email</th>
 			<th>Password</th>
-			<th>Role</th>
 			<th>Delete</th>
 			<th>Edit</th>
-			<th>View Social Details</th>
 		</tr>
-		<c:forEach items="${slist}" var="application">
+		<c:forEach items="${appget}" var="application">
 			<tr>
 				<td>${application.id}</td>
-				<td>${application.name}</td>
-				<td>${application.email}</td>
-				<td>${application.password}</td>
-				<td>${application.role}</td>
+				<td>${application.appName}</td>
+				<td>${application.appUserName}</td>
+				<td>${application.appEmail}</td>
+				<td>${application.appPass}</td>
 
 				<td><a href="delete?id=${ application.id}">Delete</a></td>
 				<td><a href="edit?id=${ application.id}">Edit</a></td>
