@@ -110,5 +110,12 @@ public class PersonController {
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("view");
 //		dispatcher.forward(request, response);
 //	}
+	
+	@RequestMapping("deleteapp")
+	public ModelAndView deleteApp(Application application) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("delete.jsp");
+		return modelAndView;
+	}
 
 }
