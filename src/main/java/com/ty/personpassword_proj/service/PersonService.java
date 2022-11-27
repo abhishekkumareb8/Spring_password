@@ -35,6 +35,11 @@ public class PersonService {
 		return  dao.getUser();
 	}
 	
+	
+	public List<Application> getAllapp(){
+		return  dao.getapp();
+	}
+	
 	public User getUserByEmail(User user) {
 		User receiveUser= dao.getUserEmail(user.getEmail());		
 		if(user.getPassword().equals(receiveUser.getPassword())) {

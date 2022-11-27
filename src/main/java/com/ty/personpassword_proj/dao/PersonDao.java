@@ -82,4 +82,13 @@ public class PersonDao {
 
 		return (User) query.getSingleResult();
 	}
+	public Application getAppByEmail(String email) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		Query query = entityManager.createQuery("Select u from Application u where u.email=?1", Application.class)
+				.setParameter(1, email);
+
+		return (Application) query.getSingleResult();
+	}
+	
+	
 }

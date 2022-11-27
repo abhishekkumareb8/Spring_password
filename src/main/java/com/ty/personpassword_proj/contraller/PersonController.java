@@ -74,7 +74,7 @@ public class PersonController {
 	public ModelAndView viewApplication(Application application) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("viewapp.jsp");
-//		modelAndView.addObject("appget", new Application());
+    	modelAndView.addObject("appget", service.getAllapp());
 		return modelAndView;
 	}
 
