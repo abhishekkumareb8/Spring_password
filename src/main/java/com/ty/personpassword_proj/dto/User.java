@@ -21,7 +21,7 @@ public class User {
 	private String role;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	List<Application> applications;
+	List<Application> application;
 
 	public String getRole() {
 		return role;
@@ -64,17 +64,17 @@ public class User {
 	}
 
 	public List<Application> getApplications() {
-		return applications;
+		return application;
 	}
 
-	public void setApplications(List<Application> applications) {
-		this.applications = applications;
+	public void setApplications(List<Application> application) {
+		this.application = application;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", role=" + role
-				+ ", applications=" + applications + "]";
+				+ ", applications=" + application + "]";
 	}
 
 }

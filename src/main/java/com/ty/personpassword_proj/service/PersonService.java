@@ -47,5 +47,13 @@ public class PersonService {
 	{
 		dao.deleteUser(id);
 	}
+	
+	public void updateUser(User user) {
+		dao.updateUser(user);
+	}
+	
+	public User getUserById(int id) {
+		return dao.getUserById(id);
+	}
 
 }
