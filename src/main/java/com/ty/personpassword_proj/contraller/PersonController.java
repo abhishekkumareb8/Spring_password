@@ -1,5 +1,12 @@
 package com.ty.personpassword_proj.contraller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -74,7 +81,7 @@ public class PersonController {
 	public ModelAndView viewApplication(Application application) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("viewapp.jsp");
-    	modelAndView.addObject("appget", service.getAllapp());
+		modelAndView.addObject("appget", service.getAllapp());
 		return modelAndView;
 	}
 
@@ -84,6 +91,7 @@ public class PersonController {
 		modelAndView.setViewName("delete.jsp");
 		return modelAndView;
 	}
+
 
 	@RequestMapping("edit")
 	public ModelAndView editEmployee(@RequestParam int id) {
@@ -98,11 +106,42 @@ public class PersonController {
 	@RequestMapping("updateuser")
 	public ModelAndView updateUser(User user) {
 		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("user", service.updateUser());
+		//	modelAndView.addObject("user", service.updateUser());
 		modelAndView.setViewName("view.jsp");
-//		modelAndView.addObject("appget", new Application());
+		//		modelAndView.addObject("appget", new Application());
 		return modelAndView;
 	}
+
+
+	
+	
+	@RequestMapping("editapp")
+	public ModelAndView editStudent(@RequestParam int id) {
+		Application application = service.getApp(id);
+		ModelAndView modelandView = new ModelAndView();
+		modelandView.addObject("application", application);
+		modelandView.setViewName("editapp.jsp");
+    
+		return modelandView;
+	}
+	
+
+	
+	
+	@RequestMapping("updateapp")
+	public void updateStudent(@ModelAttribute Application application,HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException{
+		service.updateapp(application);
+		RequestDispatcher dispatcher=req.getRequestDispatcher("viewpass");
+		dispatcher.forward(req, res);
+		
+		
+	}
+	
+	
+	
+
+
+	
 
 //	public void updateEmployee(@ModelAttribute User user, HttpServletRequest request, HttpServletResponse response)
 //			throws ServletException, IOException {
@@ -117,5 +156,6 @@ public class PersonController {
 		modelAndView.setViewName("delete.jsp");
 		return modelAndView;
 	}
+
 
 }

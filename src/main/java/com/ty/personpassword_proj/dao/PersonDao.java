@@ -27,6 +27,8 @@ public class PersonDao {
 		return user;
 	}
 	
+	
+	
 	public Application saveApp(Application application) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -35,15 +37,41 @@ public class PersonDao {
 		entityTransaction.commit();
 		return application;
 	}
+	
+	
+	
+	
 
-	public User updateUser(User user) {
+	public void updateUser(User user) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		entityManager.merge(user);
 		entityTransaction.commit();
-		return user;
+		
 	}
+	
+	
+	public void updateApp(Application application) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.merge(application);
+		entityTransaction.commit();
+
+	}
+	
+	
+	public Application  getAppById(int id) {
+		EntityManager entityManager=entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+
+		return entityManager.find(Application.class, id);
+		
+
+	}
+
+	
 
 	public boolean deleteUser(int id) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -90,6 +118,7 @@ public class PersonDao {
 		return (Application) query.getSingleResult();
 	}
 	
+
 	public boolean deleteApp(int id) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		Application user = entityManager.find(Application.class, id);
@@ -102,4 +131,5 @@ public class PersonDao {
 	}
 	
 	
+
 }

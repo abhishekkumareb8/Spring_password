@@ -12,7 +12,7 @@
 		<tr>
 			<th>ID</th>
 			<th>appName</th>
-			<th>Username</th>\
+			<th>Username</th>
 			<th>Email</th>
 			<th>Password</th>
 			<th>Delete</th>
@@ -26,9 +26,8 @@
 				<td>${application.appEmail}</td>
 				<td>${application.appPass}</td>
 
-				<td><a href="delete?id=${ application.id}">Delete</a></td>
-				<td><a href="edit?id=${ application.id}">Edit</a></td>
-				<td><a href="viewpass?id=${ application.id}">View Detail</a></td>
+				<td><a href="deleteapp?id=${ application.id}">Delete</a></td>
+				<td><a href="editapp?id=${ application.id}">Edit</a></td>
 			</tr>
 		</c:forEach>
 	</table>
