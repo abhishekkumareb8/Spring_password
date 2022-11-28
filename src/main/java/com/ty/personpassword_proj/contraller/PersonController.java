@@ -139,23 +139,14 @@ public class PersonController {
 	
 	
 	
-
-
-	
-
-//	public void updateEmployee(@ModelAttribute User user, HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		service.updateUser(user);
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("view");
-//		dispatcher.forward(request, response);
-//	}
 	
 	@RequestMapping("deleteapp")
-	public ModelAndView deleteApp(Application application) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("delete.jsp");
-		return modelAndView;
-	}
+	public void deleteStudent(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException{
 
+		service.deleteApp(Integer.parseInt(req.getParameter("id")));
+		RequestDispatcher dispatcher=req.getRequestDispatcher("delete.jsp");
+		dispatcher.forward(req, res);
+	}
+	
 
 }
