@@ -118,5 +118,18 @@ public class PersonDao {
 		return (Application) query.getSingleResult();
 	}
 	
-		
+
+	public boolean deleteApp(int id) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		Application user = entityManager.find(Application.class, id);
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.remove(user);
+		entityTransaction.commit();
+
+		return true;
+	}
+	
+	
+
 }

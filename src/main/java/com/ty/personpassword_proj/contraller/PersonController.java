@@ -112,6 +112,7 @@ public class PersonController {
 		return modelAndView;
 	}
 
+
 	
 	
 	@RequestMapping("editapp")
@@ -141,5 +142,20 @@ public class PersonController {
 
 
 	
+
+//	public void updateEmployee(@ModelAttribute User user, HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		service.updateUser(user);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("view");
+//		dispatcher.forward(request, response);
+//	}
+	
+	@RequestMapping("deleteapp")
+	public ModelAndView deleteApp(Application application) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("delete.jsp");
+		return modelAndView;
+	}
+
 
 }

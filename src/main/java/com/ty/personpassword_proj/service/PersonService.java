@@ -75,5 +75,8 @@ public class PersonService {
 	public User getUserById(int id) {
 		return dao.getUserById(id);
 	}
+	public void deleteApp(int id) {
+		dao.deleteApp(id);
+	}
 
 }
